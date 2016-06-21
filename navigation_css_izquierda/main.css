@@ -25,6 +25,7 @@ nav ul {
 li {
   text-align: center;
   padding: 5px 0px 5px 0px;
+  display: block;
 
 }
 
