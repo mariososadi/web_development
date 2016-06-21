@@ -1,0 +1,65 @@
+.container {
+  margin: 0 auto;
+  width: 768px;
+}
+
+nav {
+  float: right;
+  max-width: 768px;
+  background-color: #C0C0C0;
+  width: 108px;
+  height: 502.69px;
+  max-height: 502.69px;
+  font-size: 105%;
+  font-family: 'Open Sans', sans-serif;
+}
+
+nav ul {
+ 
+  float: center;
+  text-align: center;
+  margin-top: 20px;
+  padding-left: 0;
+}
+
+li {
+  text-align: center;
+  padding: 5px 0px 5px 0px;
+  display: block;
+
+}
+
+a {
+  color: white;
+  font-style: :none;
+  text-decoration: none;
+}
+
+header {
+  background-color: black;
+}
+
+#logo {
+  display: block;
+  margin: 0 auto;
+}
+
+.content {
+  width: 650px;
+  float: left;
+  
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.content h2 {
+
+  margin-top: 20px
+}
+
+.footer {
+  float: left;
+  width: 650px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
