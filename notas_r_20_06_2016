@@ -1,0 +1,32 @@
+Curso de R
+
+R para estadística - mejor que python
+R tiene ventaja sobre python
+El curso tiene comoobjetivo que tengamos una idea general de lo que se puede hacer con R.
+Para windows se installa por la página www.r-project.org
+
+R apesta, es la instalación del base (como instalar Ruby y luego un framework. ej. Rails)
+Rstudio es el framework para R que salga mejor.
+
+sudo apt-get install r-recommended (el profe solo instala r-base)
+
+apt-get install
+
+build-essential
+fort 77
+c-multilib
+gobjc++
+xorg-dev
+liblzma-dev
+libblas-dev
+gfortran
+aptitude
+
+
+#--------------------------------------------------------------------------------------#
+#--------------------------------------------------------------------------------------#
+
+./configure--prefix=/opt/R--enable-R-shlib
+make
+make install
+
