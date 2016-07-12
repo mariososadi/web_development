@@ -11,7 +11,7 @@ post '/urls' do
   @short = (0...4).map { (65 + rand(26)).chr }.join.downcase
   @bitly = "http://bitly.com/" + @short
 
-  @url = Urls.new(long_url: params[:url_input],short_url: @bitly)
+  @url = Urls.new(long_url: params[:url_input], short_url: @short, counter: 0)
   if @url.save
      @urls=Urls.all
      erb :urls
@@ -22,8 +22,9 @@ end
 
 get '/:id' do
      
-  @la_buena = Urls.find(params[:id]).long_url
-  redirect to @la_buena
+  @long_url = Urls.find(params[:id]).long_url
+  Urls.increment_counter(:counter, params[:id])
+  redirect 'http://' + @long_url
   # redirige a la URL original
 end
 
