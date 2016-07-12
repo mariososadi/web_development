@@ -3,6 +3,6 @@
   <p>URLs reducidas hasta el momento</p>
   <br>
   <% @urls.each do|x| %>
-  <%= x.long_url %> <br><a href="/:short_url"><%=x.short_url %></a><br><br><br>
+  <%= x.long_url %> <br><a href="/<%=x.id %>"><%=x.short_url %></a><br><br><br>
   <% end %>
   <br> 

@@ -20,8 +20,10 @@ post '/urls' do
   end
 end
 
-get '/:short_url' do
-  @url_redirect = Urls.find_by(short_url: params[:short_url])
+get '/:id' do
+     
+  @la_buena = Urls.find(params[:id]).long_url
+  redirect to @la_buena
   # redirige a la URL original
 end
 
