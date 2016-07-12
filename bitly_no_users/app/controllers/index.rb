@@ -20,4 +20,18 @@ post '/urls' do
   end
 end
 
+get '/:short_url' do
+  @url_redirect = Urls.find_by(short_url: params[:short_url])
+  # redirige a la URL original
+end
 
+
+# post '/inicia_sesion' do
+#   @user = User.find_by(email: params[:email])
+#   if @user.password == params[:password]
+#    session[:user_id] = @user.id
+#    erb :secret
+#   else
+#    erb :start
+#   end
+# end
