@@ -6,7 +6,8 @@ class Urls < ActiveRecord::Base
 
   def self.custom_url?(urls)
     sum = 0
-    if urls =~ /\@*\.*(?<=\@)*\@(.+)\w*\.(.+)\w[2]*/  #La parte del último "*"" es la de dos letras despuès del "."
+    URI.extract(urls)
+    if URI.extract(urls).empty? == false  #La parte del último "*"" es la de dos letras despuès del "."
       sum += 1
     end
 
