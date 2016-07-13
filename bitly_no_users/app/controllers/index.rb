@@ -8,15 +8,13 @@ end
 
 post '/urls' do
 
-  @short = (0...4).map { (65 + rand(26)).chr }.join.downcase
-  @bitly = "http://bitly.com/" + @short
-
-  @url = Urls.new(long_url: params[:url_input], short_url: @short, counter: 0)
-  if @url.save
-     @urls=Urls.all
-     erb :urls
-  else
+  validate_url = Urls.custom_url?(params[:url_input])
+  if validate_url == 1
     redirect to ("/")
+  else    
+    @url = Urls.create(long_url: params[:url_input])
+    @urls = Urls.all
+    erb :urls
   end
 end
 
@@ -24,17 +22,7 @@ get '/:id' do
      
   @long_url = Urls.find(params[:id]).long_url
   Urls.increment_counter(:counter, params[:id])
+  #redirige a la URL original
   redirect 'http://' + @long_url
-  # redirige a la URL original
 end
 
-
-# post '/inicia_sesion' do
-#   @user = User.find_by(email: params[:email])
-#   if @user.password == params[:password]
-#    session[:user_id] = @user.id
-#    erb :secret
-#   else
-#    erb :start
-#   end
-# end
