@@ -1,0 +1,17 @@
+<h1>Bitly 2.0</h1>
+  <br>
+  <p>URLs reducidas hasta el momento</p><br>
+  <a href="/">Inicio</a>
+  <br>
+  <br>
+  <% if @urls%>
+   <% @urls.each do|x| %>
+  <%= x.long_url %> <br><a href="/<%=x.id %>"><%="http://bitly.com/"+x.short_url %></a><br><br><br>
+  <% end %>
+  <% else%>
+  <% Urls.all.each do|x| %>
+  <%= x.long_url %> <br><a href="/<%=x.id %>"><%="http://bitly.com/"+x.short_url %></a><br><br><br>
+  <% end %>
+  <% end%>
+
+  <br> 
