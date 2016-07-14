@@ -1,4 +1,5 @@
-class Urls < ActiveRecord::Base
+class Url < ActiveRecord::Base
+  belongs_to :user
 
   before_create :set_short_url
   validates :long_url, :presence => true

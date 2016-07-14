@@ -1,17 +1,11 @@
-<h1>Bitly 2.0</h1>
-  <br>
-  <p>URLs reducidas hasta el momento</p><br>
-  <a href="/">Inicio</a>
+<h1>Bitly</h1>
   <br>
   <br>
-  <% if @urls%>
-   <% @urls.each do|x| %>
-  <%= x.long_url %> <br><a href="/<%=x.id %>"><%="http://bitly.com/"+x.short_url %></a><br><br><br>
-  <% end %>
-  <% else%>
-  <% Urls.all.each do|x| %>
-  <%= x.long_url %> <br><a href="/<%=x.id %>"><%="http://bitly.com/"+x.short_url %></a><br><br><br>
-  <% end %>
-  <% end%>
-
-  <br> 
+  <p>Introduce otra URL para reducirla. Recuerda que debe comenzar con "http://www."</p>
+  <%= erb :_urls %>
+  <br>
+  <p> Elige una de las siguientes opciones</p>
+    <ul><br>
+    <li><a href="/start">Iniciar Sesión</a>
+    <li><a href="/register">Crear Cuenta</a>
+  </ul> <br>
