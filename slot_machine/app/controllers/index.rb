@@ -14,6 +14,7 @@ post '/rolls' do
 
   @rolls = []
 
+
   if params[:value]
     3.times { @rolls << Roll.create({ value: value }) }
   else
