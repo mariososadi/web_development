@@ -13,19 +13,39 @@ $(document).ready(function() {
     $( '#Player2 td' ).removeClass('active');
     $( '#Player1 td:nth-child(2)' ).addClass('active');
     $( '#Player2 td:nth-child(2)' ).addClass('active');
-  }
+    $('.table #player1').css('background-color','')
+    $('.table #Player1 td').css('background-color','')
+    $('.table #Player2 td').css('background-color','')
+    $( 'span' ).empty().append('Presiona el botón para iniciar el juego')
+    timer = 5
+
+   }
+
+  // function countdown(){
+  //   time = setInterval(function(){ $( 'span' ).empty().append(timer);  
+  //       timer--; 
+  //   }, 1000);
+    
+  // }
+
 
   // Función inicial de arrojar las monedas y reiniciar el juego (botón de Jugar/Reiniciar)
   $( '#start_btn' ).click( function() {
-  if (counter == 0) { 
+    
+    // countdown();
+
+  if (counter == 0) {   
+  
+         
     my_var = setInterval(function(){ throw_coin_1() }, 10);
     my_var_2 = setInterval(function(){ throw_coin_2() }, 10);
-    $(this).empty().append('Reiniciar');
+        $(this).empty().append('Reiniciar'); 
     counter+=1
   }
   else {
     valores_iniciales();
   }
+  
   });
 
   // Función para detener monedas.
@@ -77,21 +97,23 @@ $(document).ready(function() {
   function winner(){
     res_1 = $(' #Player1 ').find(' td.active ').index();
     res_2 = $(' #Player2 ').find(' td.active ').index();
+    console.log(res_1)
+    console.log(res_2)
 
-    if ( res_1 < 56 && res_2 < 56 ){
+    if ( res_1 < 55 && res_2 < 55 ){
       if ( res_1 > res_2 )
-        { console.log("Gana player 1")}
+        { $('.table #Player1 td').not('.active').css('background-color','green')}
        if ( res_1 < res_2 )
-        { console.log("Gana player 2")}
+        { $('.table #Player2 td').not('.active').css('background-color','green')}
        if ( res_1 == res_2 )
         { console.log("Empate")}
 
     } else {
-      if (res_1 < 56 ){
-        console.log("Gana player 1")
+      if (res_1 < 55 ){
+        $('.table #Player1 td').not('.active').css('background-color','green')
       }
-      else if (res_2 < 56 ){
-        console.log ("Gana player 2")
+      else if (res_2 < 55 ){
+        $('.table #Player2 td').not('.active').css('background-color','green')
       } 
       else {
       console.log("Perdieron los dos, babosos")
