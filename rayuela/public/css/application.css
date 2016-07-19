@@ -43,10 +43,9 @@ button:hover {
   background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
   text-decoration: none;
 }
-.table {
 
+.table tr {
  border: 1px solid black;
-
 }
 
 .table #player1 {
@@ -71,5 +70,9 @@ button:hover {
 
 .table td.active {
   background-color: black;
+}
+
+.table td:nth-child(55){
+  border-right: 2px solid red;
 }
 
