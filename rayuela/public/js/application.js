@@ -16,37 +16,50 @@ $(document).ready(function() {
     $('.table #player1').css('background-color','')
     $('.table #Player1 td').css('background-color','')
     $('.table #Player2 td').css('background-color','')
-    $( 'span' ).empty().append('Presiona el botón para iniciar el juego')
+    $( '#left' ).empty().append('Presiona el botón para jugar')
+    $( '#right' ).empty()
     timer = 5
+    count = 5
 
    }
 
-  // function countdown(){
-  //   time = setInterval(function(){ $( 'span' ).empty().append(timer);  
-  //       timer--; 
-  //   }, 1000);
+  function countdown(){
+
+    var interval = setInterval(function() {
+    timer--;
+    $( '#left' ).empty().append(timer); 
+    if (timer == 0) {
+        // Display a login box
+        clearInterval(interval);
+        $( '#left' ).empty().append('Empieza'); 
+
+       }
+     }, 1000);
     
-  // }
+  }
 
 
   // Función inicial de arrojar las monedas y reiniciar el juego (botón de Jugar/Reiniciar)
   $( '#start_btn' ).click( function() {
     
-    // countdown();
-
-  if (counter == 0) {   
-  
-         
-    my_var = setInterval(function(){ throw_coin_1() }, 10);
-    my_var_2 = setInterval(function(){ throw_coin_2() }, 10);
+      
+      if (counter == 0) { 
+        countdown();  
         $(this).empty().append('Reiniciar'); 
-    counter+=1
-  }
-  else {
-    valores_iniciales();
-  }
-  
+        setTimeout(function(){                     
+        my_var = setInterval(function(){ throw_coin_1() }, 10);
+        my_var_2 = setInterval(function(){ throw_coin_2() }, 10);
+        counter+=1
+        }, 5000);
+      
+      }
+      else {
+        valores_iniciales();
+      }
+   
   });
+
+
 
   // Función para detener monedas.
   function myStopFunction(x){
@@ -95,28 +108,32 @@ $(document).ready(function() {
   }
 
   function winner(){
+
     res_1 = $(' #Player1 ').find(' td.active ').index();
     res_2 = $(' #Player2 ').find(' td.active ').index();
-    console.log(res_1)
-    console.log(res_2)
 
     if ( res_1 < 55 && res_2 < 55 ){
       if ( res_1 > res_2 )
-        { $('.table #Player1 td').not('.active').css('background-color','green')}
+        { $('.table #Player1 td').not('.active').css('background-color','#90EE90')
+          $('#right').empty().append('Ganador: ¡Jugador 1!')
+        }
        if ( res_1 < res_2 )
-        { $('.table #Player2 td').not('.active').css('background-color','green')}
+        { $('.table #Player2 td').not('.active').css('background-color','#90EE90')
+          $('#right').empty().append('Ganador: ¡Jugador 2!')}
        if ( res_1 == res_2 )
-        { console.log("Empate")}
+        {$('#right').empty().append('¡Empate!')}
 
     } else {
       if (res_1 < 55 ){
-        $('.table #Player1 td').not('.active').css('background-color','green')
+        $('.table #Player1 td').not('.active').css('background-color','#90EE90')
+        $('#right').empty().append('Ganador: ¡Jugador 1!')
       }
       else if (res_2 < 55 ){
-        $('.table #Player2 td').not('.active').css('background-color','green')
+        $('.table #Player2 td').not('.active').css('background-color','#90EE90')
+        $('#right').empty().append('Ganador: ¡Jugador 2!')
       } 
       else {
-      console.log("Perdieron los dos, babosos")
+      $('#right').empty().append('¡Ambos pierden!')
       }
     }
   }
@@ -130,7 +147,7 @@ $(document).ready(function() {
         // counter += 1;
       }
 
-      if(e.keyCode == 82) {
+      if(e.keyCode == 80) {
         i = true;
         myStopFunction(my_var_2);
         valida2 = true

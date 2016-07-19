@@ -76,3 +76,17 @@ button:hover {
   border-right: 2px solid red;
 }
 
+p {
+  margin: 5px 0px 5px 0px;
+  padding-left: 3px;
+  font-weight: 700;
+  font-size: 120%;
+}
+
+#form_users
+{
+  margin: 0 auto;
+  width: 768px;
+  background-color: #CCCCCC;
+
+}

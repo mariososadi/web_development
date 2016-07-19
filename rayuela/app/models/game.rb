@@ -1,4 +1,3 @@
-class User < ActiveRecord::Base
-  
+class Game < ActiveRecord::Base
   # Remember to create a migration!
 end
