@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--
+    normalize.css removes cross-browser differences in defaults, e.g.,
+    differences in how form elements appear between Firefox and IE
+    See: http://necolas.github.com/normalize.css/
+  -->
+  <link rel="stylesheet" type="text/css" href="normalize.css">
+  <meta charset="utf-8"/>
+  <!--
+    application.css is where you put your styles
+  -->
+  <link rel="stylesheet" type="text/css" href="application.css">
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="application.js"></script>
+
+  <title></title>
+
+<body>
+
+  <div class="container">
+  <header>
+  <img src="codea-logo.png" id="logo">
+</header>
+
+<h1 id="main-title">¡RAYUELA!</h1>
+    <button id="start_btn"></button><br><br>
+    <p style="float: left"><span id="left"> Presiona el botón para iniciar el juego</span></p>
+
+    <p style="float: right"><span id="right"></span></p><br><br>
+
+    <table class="table" style="float:left">
+      <tr id="Player1">
+        <td id="player1"><strong>Jugador 1</strong></td>
+        <td></td>
+      </tr>
+
+      <tr id="Player2">
+        <td id="player2"><strong>Jugador 2</strong></td>
+        <td></td>
+      </tr>
+    </table>
+</head>
+  </div>
+</body>
+</html>
