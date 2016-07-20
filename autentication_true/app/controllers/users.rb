@@ -1,10 +1,4 @@
-get '/' do
-  # La siguiente linea hace render de la vista 
-  # que esta en app/views/index.erb
-  erb :index
-end
-
-get '/start' do
+get '/start/login' do
   erb :start
 end
 
@@ -15,12 +9,12 @@ get '/secret' do
   erb :secret
 end
 
-get '/signout' do
+get '/signout/out' do
   session.destroy
   erb :index
 end
 
-get '/register' do
+get '/register/signup' do
   erb :registration
 end
 
@@ -30,7 +24,7 @@ post '/register' do
     session[:user_id] = @user.id
     erb :secret
   else
-    redirect to ("/register")
+    redirect to ("/register/signup")
   end
 end
 

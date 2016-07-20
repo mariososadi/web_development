@@ -1,0 +1,14 @@
+  <h1>Bitly 2.0</h1>
+  <p>Crea tu propia URL reducida</p>
+  <br><br>
+  <p>Introduce tu url comenzando con un "http://www."</p>
+  <%= @mensaje %>
+  <form id ="forma" action="/urls" method="post">
+    <br>
+    <input type="text" name="url_input">
+    <input type="submit" value="ReduceURL">
+  </form>
+
+  <p>URLs reducidas hasta el momento</p>
+<a href="/urls"> URls Reducidas</a>
+

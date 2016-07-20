@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
-  # Remember to create a migration!
+  
+  has_many :urls
+
   validates :email, :presence => true
   validates :email, :uniqueness => true
   validates :password, :presence => true

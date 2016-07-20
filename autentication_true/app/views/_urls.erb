@@ -1,0 +1,20 @@
+   <form id ="forma" action="/urls" method="post">
+    <br>
+    <input type="text" name="url_input">
+    <input type="submit" value="ReduceURL">
+  </form>
+   <br>
+    <br>
+  <p>URLs reducidas hasta el momento</p>
+
+  <% if @urls%>
+   <% @urls.each do|x| %>
+   <%= x.long_url %> <br><a href="/<%=x.id %>"><%="http://bitly.com/" + x.short_url %></a><br>
+    <a><%= "Contador de visitas: #{x.counter}" %></a><br><br>
+    <% end %>
+  <% else%>
+   <% Url.all.each do|x| %>
+    <%= x.long_url %> <br><a href="/<%=x.id %>"><%="http://bitly.com/"+x.short_url%> </a><br>
+   <a><%= "Contador de visitas: #{x.counter}" %></a><br><br>
+    <% end %>
+  <% end%>
