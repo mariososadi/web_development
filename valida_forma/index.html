@@ -17,32 +17,31 @@
   <script src="application.js"></script>
 
   <title></title>
-
 <body>
 
   <div class="container">
   <header>
-  <img src="codea-logo.png" id="logo">
-</header>
+    <img src="codea-logo.png" id="logo">
+  </header>
 
-<h1 id="main-title">¡RAYUELA!</h1>
-    <button id="start_btn"></button><br><br>
-    <p style="float: left"><span id="left"> Presiona el botón para iniciar el juego</span></p>
+  <h1 id="main-title">VALIDACIONES</h1>
 
-    <p style="float: right"><span id="right"></span></p><br><br>
-
-    <table class="table" style="float:left">
-      <tr id="Player1">
-        <td id="player1"><strong>Jugador 1</strong></td>
-        <td></td>
-      </tr>
-
-      <tr id="Player2">
-        <td id="player2"><strong>Jugador 2</strong></td>
-        <td></td>
-      </tr>
-    </table>
-</head>
+<form id="validation" action="#" method="post">
+      Email:<br>
+  <input id="email" type="text" name="email" ><br>
+      Password:<br>
+  <input id="password"type="password" name="password" ><br><br>
+  <input type="submit" value="Sign Up">
+</form>
+  <div>
+    <ul id="mensaje_a"></ul>
   </div>
+  <div>
+    <ul id="mensaje_b"></ul>
+  </div>
+
+</head>
+</div>
+
 </body>
 </html>
