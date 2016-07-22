@@ -1,3 +1,6 @@
 class Game < ActiveRecord::Base
-  # Remember to create a migration!
+
+  has_many :stats
+  has_many :users, through: :stats
+  
 end

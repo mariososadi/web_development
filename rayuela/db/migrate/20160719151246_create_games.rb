@@ -1,7 +1,7 @@
 class CreateGames < ActiveRecord::Migration
   def change
-    create_table :users do |t|
-    t.string :nick_name
+    create_table :gamess do |t|
+    t.string :name
     t.timestamps
   end
   end

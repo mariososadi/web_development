@@ -10,3 +10,7 @@ post '/start' do
 
 end
 
+get '/juegos_jugados' do
+  erb :juegos_jugados
+end
+

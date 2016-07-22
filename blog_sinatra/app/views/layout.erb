@@ -5,11 +5,13 @@
     normalize.css remueve las diferenecia que hay entre browsers segun los defaults de css predeterminados que utilizan. 
     Revisa: http://necolas.github.com/normalize.css/
   -->
-  <link rel="stylesheet" href="/css/normalize.css">
+ <!--  <link rel="stylesheet" href="/css/normalize.css"> -->
   <!--
     application.css este es el archivo donde van tus estilos, tu css
   -->
-  <link rel="stylesheet" href="/css/application.css">
+<!--   <link rel="stylesheet" href="/css/application.css"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
@@ -17,6 +19,17 @@
   <title></title>
 </head>
 <body>
+  <nav class="navbar navbar-default">
+  <div class="container-fluid">
+  <div class="navbar-header">
+    <a class="navbar-brand" href="/"><i class="fa fa-paperclip"></i> BLOG</a>
+  <ul class="nav navbar-nav">
+  <li><a href="/post/new">Crear Post</a></li>
+  <li><a href="/post">Mostrar Posts</a></li>
+  <li><a href="/post/edit">Editar Post</a></li>
+  <li><a href="/post/delete">Eliminar Post</a></li>
+  </ul>
+</nav>
   <div class="container">
     <%= yield %>
   </div>
