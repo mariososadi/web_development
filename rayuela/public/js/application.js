@@ -144,7 +144,6 @@ $(document).ready(function() {
         myStopFunction(my_var);
         valida1 = true
         valida_juego()
-        // counter += 1;
       }
 
       if(e.keyCode == 80) {
@@ -152,8 +151,6 @@ $(document).ready(function() {
         myStopFunction(my_var_2);
         valida2 = true
         valida_juego()
-        // valida_vars()
-        // counter += 1;
       }
     });
 });
