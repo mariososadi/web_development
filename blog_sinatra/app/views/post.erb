@@ -1,14 +1,9 @@
   <h1>Posts</h1>
-  <p>Posts anónimos hasta el momento.</p>
+  <h4>Posts anónimos hasta el momento.</h4>
 
-   <% Post.all.each do|x| %>
-  <h3><%= x.title %></h3><%=x.post_date%><br> <%=x.body %><br><ul class="list-inline container-fluid"><% x.tags.each do |y| %><li><a href="/tag/<%=y.name%>"><%=y.name%></a> </li><% end %></ul>
-  <br><br>
-  <% end %>
+<% Post.all.each do|x| %>
+  <h3><a href="/post/<%=x.id%>"><%=x.title%></a></h3><%=x.post_date%><br> <%=x.body %><br><ul class="list-inline container-fluid"><% x.tags.each do |y| %><li><a href="/tag/<%=y.name%>"><%=y.name%></a> </li><% end %></ul>
+  <br>
+<% end %>
 
-  <ul>
-  <li><a href="/post/new">Crear Post</a></li>
-  <li><a href="/post/edit">Editar Post</a></li>
-  <li><a href="/post/delete">Eliminar Post</a></li>
-  <ul>
 
