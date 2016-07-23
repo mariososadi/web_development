@@ -1,0 +1,5 @@
+<h1>Tags</h1>
+<p>Posts con el tag <%=@cosa%></p>
+
+<ul><% @tag.posts.each do |y| %><li><a href="/post/<%=y.id%>"><%=y.title%></a> </li><% end %></ul>
+  <br><br>

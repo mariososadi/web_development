@@ -1,0 +1,4 @@
+  <h1><%= @post_view.title %></h1>
+  <p><%= @post_view.body %></p>
+
+  <ul class="list-inline container-fluid"><% @post_view.tags.each do |y| %><li><a href="/tag/<%=y.name%>"><%=y.name%></a> </li><% end %></ul>

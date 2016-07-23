@@ -1,10 +1,14 @@
   <h1>Posts</h1>
   <p>Posts anónimos hasta el momento.</p>
 
-  
+   <% Post.all.each do|x| %>
+  <h3><%= x.title %></h3><%=x.post_date%><br> <%=x.body %><br><ul class="list-inline container-fluid"><% x.tags.each do |y| %><li><a href="/tag/<%=y.name%>"><%=y.name%></a> </li><% end %></ul>
+  <br><br>
+  <% end %>
 
   <ul>
   <li><a href="/post/new">Crear Post</a></li>
   <li><a href="/post/edit">Editar Post</a></li>
   <li><a href="/post/delete">Eliminar Post</a></li>
-  </ul>
+  <ul>
+
