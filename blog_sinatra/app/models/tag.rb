@@ -4,4 +4,5 @@ class Tag < ActiveRecord::Base
 
   has_many :lists
   has_many :posts, through: :lists
+
 end
