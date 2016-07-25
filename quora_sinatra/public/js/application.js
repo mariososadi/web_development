@@ -19,9 +19,17 @@ $(document).ready(function() {
 
     if (x.length != 0 && validation_mail(x) && y.length != 0 && number_password(y) && y.length > 7 && capital_password(y)) {
         formulario = $('#signup').serialize();
-        console.log(formulario);
-        $.post('/signup',formulario);
-        window.location.replace("/login");
+        $.post('/signup',formulario, function(data) {
+          if(data.indexOf('Oops! you enter an invalid email or password. Plase, try again.') !== -1) {
+            $( location ).attr("href", '/signup?mess=0')
+          } else if ( data.indexOf('That email adress is already taken.') !== -1) {
+            $( location ).attr("href", '/signup?mess=1')
+          } else if ( data.indexOf('Please, introduce a valid email adress and password.') !== -1) {
+            $( location ).attr("href", '/signup?mess=0')
+          } else {
+            $( location ).attr("href", '/questions')
+          }     
+        });
 
     } else {
         $("#para").empty()

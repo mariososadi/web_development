@@ -1,8 +1,11 @@
 <h1>Sign Up</h1>
-<% if @validate_signup%>
-  <p style="color: red"><%= @mess %></p><br>
+<% if @validations=="0"%>
+  <p id="validation_signup" style="color: red">
+    Oops! you enter an invalid email or password. Plase, try again.</p>
+<% elsif @validations=="1"%>
+  <p id="validation_signup" style="color: red">That email adress is already taken. Please, enter a different one.</p>
 <%else%>
-  <p id="para">Please, introduce a valid email adress and password.</p>
+  <p id="validation_signup" id="para">Please, introduce a valid email adress and password.</p>
 <% end%>
 
   <div style="background:#FFB6C1">

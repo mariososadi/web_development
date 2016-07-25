@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  
+
   include BCrypt #BCrypt for encription of users' password
 
   has_many :questions
@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   has_many :answers_written, class_name: "Answer", foreign_key: "user_id"
 
   #Database validations (uniqueness and presence)
+  validates :first_name, :presence => true 
+  validates :last_name, :presence => true
   validates :email, :presence => true 
   validates :email, :uniqueness => true
   validates :password_digest, :presence => true
