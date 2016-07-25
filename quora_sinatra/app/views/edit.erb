@@ -1,0 +1,11 @@
+<h1>Editar Post</h1>
+<br>
+
+<form method="post" action="/post/edit">
+<input id="hidden" type="hidden" name="_method" value="<%=@post_edit.id%>">
+
+<input type="text" name="title" value="<%= @post_edit.title %>"><br><br>
+<textarea name="body" cols="40" rows="5" ><%= @post_edit.body %></textarea><br>
+<input class="btn btn-primary" type="submit" name="create" value="Edit">
+</form>
+
