@@ -1,2 +1,11 @@
 <h1>Hello <%=@user.first_name %>!</h1>
 <a href="/questions/new"><button type="button" class="btn btn-default">Post a New Question</button></a>
+<br><br>
+
+<% Question.all.each do|x| %>
+  <% if x.user_id == session[:user_id] %>
+    <h3><a href="#"><%=x.title%></a></h3><%=x.quest_date%><br> <%=x.body %>
+    <br>
+  <% end %>
+<% end %>
+

@@ -1,8 +1,12 @@
 class Question < ActiveRecord::Base
 
-  validates :title, :presence => true 
-  validates :body, :presence => true
-
   belongs_to :user
+
+  validates :title, :presence => true 
+
+  def self.title?(question)
+    question.empty?
+  end
+  
 
 end

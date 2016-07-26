@@ -1,0 +1,9 @@
+<h1>Quora 2.0</h1>
+  <h4>Recent Questions</h4><br>
+<p>Please, click in a question if you know the answer.</p>
+<br><br>
+
+<% Question.all.each do|x| %>
+    <h3><a href="#"><%=x.title%></a></h3><h5> Posted by: <%= @user.find(x.user_id).first_name %>&nbsp;<%= @user.find(x.user_id).last_name %></h5>
+    <%=x.quest_date%><br><br>
+<% end %>

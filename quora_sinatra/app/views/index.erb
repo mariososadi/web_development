@@ -1,8 +1,19 @@
   <h1>Quora 2.0</h1>
   <h4>Welcome to Quora 2.0, the sexy brother of "Quora".</h4><br>
 <p>Please, choose an option.</p>
- <p>
+ 
+
+<% if logged_in? %>
+<p>
+ <a href="/questions/new" > <i class="fa fa-sign-in"> &nbsp;</i>Post New Question</a><br>
+ <a href="/questions"><i class="fa fa-pencil-square-o"> &nbsp;</i>Answer Question</a>
+</p>
+
+<% else %>
+<p>
  <a href="/login" > <i class="fa fa-sign-in"> &nbsp;</i>Log In</a></li><br>
  <a href="/signup"><i class="fa fa-pencil-square-o"> &nbsp;</i>Sign Up</a></li>
 </p>
+<% end%>
+
   

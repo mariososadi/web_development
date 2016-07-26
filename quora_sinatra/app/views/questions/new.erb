@@ -3,22 +3,19 @@
 
 <% if @validate_question%>
   <p style="color: red"><%= @mess %></p><br>
-  <form method="post" action="/post/new">
+<form method="post" action="/questions/new">
 
-<input type="text" name="title" placeholder="Add your question here..."><br><br>
+<input type="text" name="title" placeholder="Add your question..."><br><br>
 <textarea name="body" cols="40" rows="5" placeholder="Add some text for better understanding of your question..."></textarea><br><br>
 <input class="btn btn-primary" type="submit" name="create" value="Crear">
 </form>
 <% else%>
 
-<form method="post" action="/post/new">
+<form method="post" action="/questions/new">
 
-<input type="text" name="title" placeholder="Título del Blog"><br><br>
-<textarea name="body" cols="40" rows="5" placeholder="Agrega el contenido"></textarea><br><br>
-<label for="post_tags">Tags:</label>
-<input id="post_tags" name="post_tags" placeholder="tag1, tag2, otro tag..."><br><br>
+<input type="text" name="title" placeholder="Add your question..."><br><br>
+<textarea name="body" cols="40" rows="5" placeholder="Add some text for better understanding of your question..."></textarea><br><br>
 <input class="btn btn-primary" type="submit" name="create" value="Crear">
 </form>
-
 <% end%>
 
