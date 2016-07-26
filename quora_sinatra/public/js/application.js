@@ -27,7 +27,7 @@ $(document).ready(function() {
           } else if ( data.indexOf('Please, introduce a valid email adress and password.') !== -1) {
             $( location ).attr("href", '/signup?mess=0')
           } else {
-            $( location ).attr("href", '/questions')
+            $( location ).attr("href", '/user')
           }     
         });
 
