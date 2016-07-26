@@ -14,7 +14,7 @@ post '/login' do
     @user = User.find_by(email: params[:email])
     if User.authenticate(params[:email],params[:password])
       session[:user_id] = @user.id
-      redirect '/questions' 
+      redirect '/user' 
     else
       redirect to('/login?error=Incorrect email and password.')
     end  
@@ -40,7 +40,7 @@ post '/signup' do
       @user.password = params[:password]
       if @user.save
         session[:user_id] = @user.id
-        redirect '/questions' 
+        redirect '/user' 
       else
         redirect to('/signup?mess=1')
       end  
@@ -56,4 +56,22 @@ get '/logout' do
   else
     redirect to '/'
   end
+end
+
+get '/user' do
+  redirect_if_not_logged_in
+  @user = current_user
+  erb :'user/show'
+end
+
+get '/user/edit' do
+  redirect_if_not_logged_in
+  @user = current_user
+  erb :'user/profile'
+end
+
+post '/user/edit' do
+  p "Hola Mundo"
+  User.update(params[:_id], :first_name => params[:first_name], :last_name => params[:last_name])
+  redirect '/user'
 end

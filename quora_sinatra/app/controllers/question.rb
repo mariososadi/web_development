@@ -1,9 +1,3 @@
-get '/questions' do
-  redirect_if_not_logged_in
-  @user = current_user
-  erb :'questions/show'
-end
-
 get '/questions/new' do
   redirect_if_not_logged_in
   erb :'/questions/new'
@@ -18,14 +12,22 @@ post '/questions/new' do
     erb :'/questions/new'
   else    
     Question.create(user_id: @user.id, title: params[:title], body: params[:body], quest_date: DateTime.now)
-    redirect '/questions'
+    redirect '/questions/user'
   end
 end
 
 get '/questions/all_users' do
   redirect_if_not_logged_in
+  @answers = Answer.all
   @user = User.all
+
   erb :'/questions/all'
-  
+end
+
+get '/questions/:id' do
+  redirect_if_not_logged_in
+  @user = User.all
+  @question = Question.find(params[:id])
+  erb :'/questions/id'
 end
 

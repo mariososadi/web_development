@@ -1,7 +1,8 @@
-<h1>Hello <%=@user.first_name %>!</h1><br>
+<h1>Hello <%=@user.first_name %>!</h1>
+ <p><a href="/user/edit"><i class="fa fa-pencil"> &nbsp;</i>Edit Profile</a><br></p>
+<br>
 <a href="/questions/new"><button type="button" class="btn btn-default">Post a New Question</button></a>
 <br><br>
-
 <h3>Your Questions</h3>
 <br>
 <% Question.all.each do|x| %>

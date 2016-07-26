@@ -1,0 +1,15 @@
+<h1><%=@user.first_name%>'s Profile</h1>
+<br>
+
+<form id="edit" method="post" action="/user/edit">
+  <input id="hidden" type="hidden" name="_id" value="<%=@user.id%>">
+<div class="form-group">
+<label for="first_name">First Name</label>
+<input id="first_name" type="text" name="first_name" placeholder="<%=@user.first_name%>"><br>
+</div>
+<div class="form-group">
+<label for="last_name">Last Name</label>
+<input id="last_name" type="text" name="last_name" placeholder="<%=@user.last_name%>"><br>
+</div>
+<input class="btn btn-primary" type="submit" name="submit" value="Update">
+</form>

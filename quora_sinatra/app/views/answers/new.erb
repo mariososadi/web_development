@@ -1,0 +1,19 @@
+<h1><%= @question.title %></h1>
+<p><%= @question.body %></p>
+
+<% if @validate_answer%>
+  <p style="color: red"><%= @mess %></p><br>
+<form method="post" action="/questions/<%= @question.id %>/answer/new">
+
+<textarea name="body" cols="40" rows="5" placeholder="Add your answer here..."></textarea><br><br>
+<input class="btn btn-primary" type="submit" name="create" value="Answer">
+</form>
+<% else%>
+
+<form method="post" action="/questions/<%= @question.id %>/answer/new">
+
+
+<textarea name="body" cols="40" rows="5" placeholder="Add your answer here..."></textarea><br><br>
+<input class="btn btn-primary" type="submit" name="create" value="Answer">
+</form>
+<% end%>
