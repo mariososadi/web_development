@@ -1,0 +1,21 @@
+  <h1>Selfie</h1>
+  <h4>Welcome to Selfie!</h4><br>
+<p>Please, choose an option.</p>
+ 
+
+<% if logged_in? %>
+<p>
+ <a href="/photos/upload" > <i class="fa fa-sign-in"> &nbsp;</i>Upload Picture</a><br>
+ <a href="/photos/all"><i class="fa fa-pencil-square-o"> &nbsp;</i>Discover Pictures</a>
+
+</p>
+
+<% else %>
+<p>
+  <a href="/photos/all"><i class="fa fa-pencil-square-o"> &nbsp;</i>Discover Pictures</a><br>
+   <a href="/login" > <i class="fa fa-sign-in"> &nbsp;</i>Log In</a><br>
+   <a href="/signup"><i class="fa fa-pencil-square-o"> &nbsp;</i>Sign Up</a>
+</p>
+<% end%>
+
+  

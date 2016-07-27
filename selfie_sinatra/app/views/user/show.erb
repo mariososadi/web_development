@@ -1,0 +1,17 @@
+<h1>Hello <%=@user.first_name %>!</h1>
+<br>
+<br>
+<a href="/photos/upload"><button type="button" class="btn btn-default">Upload a Selife!</button></a>
+<br><br>
+<h3>Your Selfies</h3>
+<br>
+<% Photo.all.each do|x| %>
+  <% if x.user_id == @user.id %>
+    <br>
+     <img src="<%= x.photo_url(:thumb) %>">
+  <% end %>
+    <br>
+<% end %>
+<br><br>
+
+

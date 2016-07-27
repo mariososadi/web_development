@@ -1,0 +1,15 @@
+<h1>Selfie</h1>
+<h4>Enjoy!</h4><br>
+
+<% if logged_in? %>
+
+<p> Click to enlarge the picture. </p>
+<br>
+<% Photo.all.each do|x| %>
+    <img src="<%= x.photo_url(:thumb) %>">
+  <% end %>
+
+
+<% else %>
+<p> Log In or Sign Up so you can upload yours! (Click to enlarge pictures) </p>
+<% end%>

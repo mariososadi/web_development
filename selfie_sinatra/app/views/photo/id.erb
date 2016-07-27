@@ -1,0 +1,16 @@
+ <h1><%= @question.title %></h1>
+  <p><%= @question.body %></p>
+
+<br>
+<br>
+<% Answer.all.each do|x| %>
+  <% if x.question_id == @question.id %>
+    <h5> Answered by: <%= @user.find(x.user_id).first_name %>&nbsp;<%= @user.find(x.user_id).last_name %></h5>&nbsp;
+    <%=x.quest_date%><br><p><%=x.body%></p><br>
+<% end %>
+<% end %>
+<br>
+
+<p>
+<a href="/questions/<%= @question.id %>/answer/new"><i class="fa fa-pencil"></i> &nbsp;Answer</a><br>
+</p>

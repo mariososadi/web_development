@@ -1,0 +1,7 @@
+  <h1>¿Borar Post?</h1>
+  <p>¿Estás segro de que quieres borrar este post? Esto borrará PERMANENTEMENTE toda la información del post.</p>
+
+<form method="post" action="/post/delete">
+  <input id="hidden" type="hidden" name="_method" value="<%=@post_delete%>">
+  <input type="submit" value="Borrar">
+<form>
