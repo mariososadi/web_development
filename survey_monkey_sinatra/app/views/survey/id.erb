@@ -1,0 +1,18 @@
+ <h1><%= @question.title %></h1>
+  <p><%= @question.body %></p>
+  <a href="/questions/<%= @question.id %>/plus"><i class="fa fa-plus"></i></a> &nbsp;<%= @vote.counter%>&nbsp;<a href="/questions/<%= @question.id %>/minus"><i class="fa fa-minus"></i></a> 
+
+<br>
+<br><br><br>
+<% Answer.all.each do|x| %>
+  <% if x.question_id == @question.id %>
+   <p><%=x.body%></p> <h5> Answered by: <%= @user.find(x.user_id).first_name %>&nbsp;<%= @user.find(x.user_id).last_name %></h5>&nbsp;
+    <%=x.quest_date%><br>
+    <a href="/answer/<%= x.id %>/plus"><i class="fa fa-plus"></i></a> &nbsp;<%= AnswerVote.find_by(answer_id: x.id).counter%>&nbsp;<a href="/answer/<%= x.id %>/minus"><i class="fa fa-minus"></i></a> <br><br><br>
+<% end %>
+<% end %>
+<br>
+
+<p>
+<a href="/questions/<%= @question.id %>/answer/new"><i class="fa fa-pencil"></i> &nbsp;Answer</a><br>
+</p>

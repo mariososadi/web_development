@@ -1,0 +1,19 @@
+  <h1><i class="fa fa-rocket"></i>&nbsp;Rocket Survey</h1>
+  <h4>Welcome to Rocket Survey</h4><br>
+ 
+
+<% if logged_in? %>
+<p>
+ <a href="/user" > <i class="fa fa-sign-in"> &nbsp;</i>Create New Survey</a><br>
+ <a href="/questions"><i class="fa fa-pencil-square-o"> &nbsp;</i>Answer Survey</a>
+</p>
+
+<% else %>
+<p>
+ <a href="/login" > <i class="fa fa-sign-in"> &nbsp;</i>Log In</a></li><br>
+ <a href="/signup"><i class="fa fa-pencil-square-o"> &nbsp;</i>Sign Up</a></li>
+</p>
+
+<% end%>
+
+  

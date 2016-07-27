@@ -1,0 +1,23 @@
+<h1>Hello <%=@user.first_name %>!</h1><br>
+<a href="/questions/new"><button type="button" class="btn btn-default">Post a New Question</button></a>
+<br><br>
+
+<h3>Your Questions</h3>
+<br>
+<% Question.all.each do|x| %>
+  <% if x.user_id == @user.id %>
+    <h4><a href="/questions/<%= x.id%>"><%=x.title%></a></h4><%=x.quest_date%><br> <%=x.body %>
+    <br>
+  <% end %>
+<% end %>
+<br><br>
+
+<h3>Your Answers</h3>
+<br>
+<% Answer.all.each do|x| %>
+  <% if x.user_id == session[:user_id] %>
+    <h4><a href="/questions/<%= x.question_id%>"><%=Question.find(x.question_id).title%></a></h4><%=x.quest_date%><br> <p><strong><%=x.body %></strong></p>
+    <br>
+  <% end %>
+<% end %>
+<br><br>
