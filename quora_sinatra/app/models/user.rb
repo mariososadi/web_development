@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   has_many :answers_received, through: :questions, source: :answers
   has_many :answers_written, class_name: "Answer", foreign_key: "user_id"
 
+
+
   #Database validations (uniqueness and presence)
   validates :first_name, :presence => true 
   validates :last_name, :presence => true
