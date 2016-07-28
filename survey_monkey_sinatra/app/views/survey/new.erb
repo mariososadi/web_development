@@ -1,8 +1,18 @@
 <h1><%=@survey.title%></h1>
 
-<form id="signup" method="post" action="/signup/create">
-<div class="form-group">
-</div>
-<input class="btn btn-primary" type="submit" name="submit" value="Complete Survey">
+<h3 class="initial">Survey questions:</h3><br>
+
+<form id="create_survey" method="post" action="#">
+  <p id="error"></p>
 </form>
 
+<div id ="add_answer" class="form-group">
+<input id="answer" type="text" name="first_name" placeholder="Type answer...">&nbsp;<input id="generate_answer" class="btn btn-primary" type="submit" name="submit" value="Generate Answer"><br>
+</div>
+
+<div id ="create_question" class="form-group">
+<input id="question" type="text" name="first_name" placeholder="Type your question...">&nbsp;<input id="generate_question" class="btn btn-primary" type="submit" name="submit" value="Generate Question"><br>
+</div>
+<br>
+<button id="finish_question" class="btn btn-primary" type="button" >Done With Question</button><br><br>
+<button class="btn btn-primary" type="button">Complete Survey</button>

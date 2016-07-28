@@ -1,17 +1,45 @@
 $(document).ready(function() {
 
-
+  // JQuery for Sign Up validation (front-end)
   $( '#signup' ).submit( function(event) {
 
     event.preventDefault();
-    myFunction();
+    signupValidation();
+
+  });
+  
+  // JQuery for Survey creation (quesion-dynamic)
+  $( '#add_answer').hide();
+  $( '.initial' ).hide();
+  $( '#finish_question' ).hide();
+  cont_survey = 0;
+
+  $( '#generate_question' ).on( 'click' , function(event) {
+
+    event.preventDefault();
+    questionGenerator();
 
   });
 
+  $( '#generate_answer' ).on( 'click' , function(event) {
+
+    event.preventDefault();
+    answerGenerator();
+
+  });
+
+  $( '#finish_question' ).on( 'click' , function(event) {
+
+    event.preventDefault();
+    setQuestion();
+
+  });
 
 //-----------------------------------------------------------------//
-//Funciones para ser utilizadas en la página
- function myFunction() {
+// Sign Up validation functions
+//-----------------------------------------------------------------//
+
+function signupValidation() {
 
     var a,b,x, y;
     a = document.getElementById("first_name").value;
@@ -19,7 +47,7 @@ $(document).ready(function() {
     x = document.getElementById("email").value;
     y = document.getElementById("password").value;
 
-    if (x.length != 0 && validation_mail(x) && y.length != 0 && number_password(y) && y.length > 7 && capital_password(y)) {
+    if (x.length != 0 && validationMail(x) && y.length != 0 && numberPassword(y) && y.length > 7 && capitalPassword(y)) {
         formulario = $('#signup').serialize();
         $.post('/signup',formulario, function(data) {
           if(data.indexOf('Oops! you enter an invalid email or password. Plase, try again.') !== -1) {
@@ -43,24 +71,60 @@ $(document).ready(function() {
     }
 }
 
-function number_password(password){
+function numberPassword(password){
   var res = (/[0-9]/g).test(password);
   return res
 }
 
-function capital_password(password){
+function capitalPassword(password){
   var res = (/[A-Z]/g).test(password);
   return res
 }
 
-function validation_mail(email) {
+function validationMail(email) {
   var re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
   var valid = re.test(email)
   return valid
 }
 
 
+//-----------------------------------------------------------------//
+// Survey AJAX functions
+//-----------------------------------------------------------------//
 
-//---------------------------------------------------------------------------//
+// Question generator
+function questionGenerator() {
 
+    $( 'form #error' ).empty();
+    if (document.getElementById("question").value.length === 0 ){
+      $( 'form #error' ).append( 'Please, enter a valid question' )
+    } else {
+      $( '#create_question' ).hide();
+      $( '.initial' ).show();
+      var c = document.getElementById("question").value;
+      $( 'form' ).append('<div class="form-group"><h4>'  + cont_survey + '. ' + c + '</h4><ol></ol></div>')
+      $( '#add_answer' ).show();
+      $( '#finish_question' ).show();
+      $( '#question').val('');
+      cont_survey++;
+    }    
+}
+
+// Answer generator
+function answerGenerator() {
+    var d = document.getElementById("answer").value;
+    $( 'form div:last ol' ).append('<li>' + d + '</li>');
+    $( '#answer').val('');  
+}
+
+// Question and Answers set to screen
+function setQuestion() {   
+    $( '#add_answer').hide();
+    $( 'form div:last' ).css('background','#87CEFA')
+    $( 'form' ).append('<br>');
+    $( '#create_question' ).show();  
+}
+
+
+//-----------------------------------------------------------------//
 });
