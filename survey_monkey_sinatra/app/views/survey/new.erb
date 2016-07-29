@@ -8,15 +8,15 @@
 <div id="error_survey" class="alert alert-danger"><strong>Oops!</strong> You can't create a survey with no answers.</div>
 <div id="survey_form" method="post"> </div>
 
-<div id ="add_answer" >
-<input id="answer" type="text" name="first_name" placeholder="Type answer...">&nbsp;<input id="generate_answer" class="btn btn-primary" type="submit" name="submit" value="Generate Answer"><br>
-</div>
+<form id="add_answer" method="post" action="#" >
+<input id="answer" type="text" name="answer" placeholder="Type answer...">&nbsp;<input id="generate_answer" class="btn btn-primary" type="submit" name="submit" value="Generate Answer"><br>
+</form>
 <div>
 <button id="finish_question" class="btn btn-primary" type="button" >Done With Question</button><br><br>
 </div>
-<div id ="create_question" >
-<input id="question" type="text" name="first_name" placeholder="Type your question...">&nbsp;<input id="generate_question" class="btn btn-primary" type="submit" name="submit" value="Generate Question"><br>
-</div>
+<form id ="create_question" method="post" action="#">
+<input id="question" type="text" name="question" placeholder="Type your question...">&nbsp;<input id="generate_question" class="btn btn-primary" type="submit" name="submit" value="Generate Question"><br>
+</form>
 <br>
 <form>
 <input  id="survey_id" type="hidden" name="survey_id" value="<%=@survey.id%>">

@@ -12,9 +12,15 @@ post '/survey/:id/create' do
   end
 end
 
+get '/survey/all' do
+  redirect_if_not_logged_in
+  
+  
+  
+end
+
 get '/survey/all/:id' do
   redirect_if_not_logged_in
   
   
 end
-

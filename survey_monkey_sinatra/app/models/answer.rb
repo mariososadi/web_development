@@ -5,7 +5,7 @@ class Answer < ActiveRecord::Base
   belongs_to :authored_by, class_name: "User", foreign_key: "user_id"
 
   # Database validations
-  validates :body, :presence => true
+  validates :title, :presence => true
 
   # Model methods
   def self.body?(answer)

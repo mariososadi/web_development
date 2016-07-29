@@ -13,10 +13,11 @@ $(document).ready(function() {
   $( '.initial' ).hide();
   $( '#finish_question' ).hide();
   $( 'div #error' ).hide();
-  $( 'div #error_question' ).hide();  
+  $( 'div #error_question' ).hide();
+  $( '#create_question' ).show();  
 
 
-  $( '#generate_question' ).on( 'click' , function(event) {
+  $( '#create_question' ).submit(function(event) {
 
     event.preventDefault();
     questionGenerator();
@@ -117,7 +118,11 @@ function questionGenerator() {
       $( '#create_question' ).hide();
       $( '.initial' ).show();
       var c = document.getElementById("question").value;
-      $( '#survey_form' ).append('<div class="form-group"><h4 class="header_question">'  +  c + '</h4><div><ol></ol></div><br></div>')
+      $( '#survey_form' ).append('<div class="form-group"><h4>'  +  c + '</h4><ol></ol><br></div>')
+      var question = $( '#create_question' ).serialize()
+      $.post('/question/create', question, function(data){
+        question_id = data;
+      });      
       $( '#add_answer' ).show();
       $( '#finish_question' ).show();
       $( '#question').val('');
@@ -137,6 +142,10 @@ function answerGenerator() {
       $( 'div #error_survey' ).hide();   
       var d = document.getElementById("answer").value;
       $( '#survey_form div:last ol' ).append('<li>' + d + '</li>');
+      var answer = $( '#add_answer' ).serialize() +'&question_id=' + question_id
+      $.post('/answer/create', answer, function(data){
+        question_id = data;
+      });
       $( '#answer').val('');  
       $( 'div #error' ).hide();
     }
@@ -156,7 +165,6 @@ function setQuestion() {
     $( 'div #error' ).hide(); 
     $( '#add_answer').hide();
     $( '#survey_form div:last' ).css('background','#87CEFA');
-    // $( '#survey_form' ).append('<br>');
     $( '#create_question' ).show();    
   } 
 }
@@ -166,30 +174,7 @@ function surveyGenerator() {
   if ($( '#survey_form div ol' ).is(':empty')) {
     $( 'div #error_survey' ).show();
   } else {
-
-    $( '#survey_form div.form-group' ).each( function( index ) {
-
-        survey_id = 'survey_id=' + document.getElementById('survey_id').value;
-        pregunta = 'question=' + $( this ).html();
-        sint = survey_id+'&'+pregunta;
-
-      $.post('/question/create', sint, function(data){
-        console.log(data);
-          question_id = data;
-
-         // question_id = 'question_id=' + data
-         // $.post('/answers/create', question_id, function(data){
-         //   console.log(data);
-         // });
-         
-      });
-
-      $(this).
-    });
-
-
-    // console.log("chale")    
-    // seriealize entrega esto -> first_name=pepe&last_name=pecas&email=pepe%40pecas.com&password=Mario123
+    $( location ).attr("href", '/user')
   } 
 }
 
