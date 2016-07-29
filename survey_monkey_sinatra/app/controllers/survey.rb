@@ -14,12 +14,7 @@ end
 
 get '/survey/all/:id' do
   redirect_if_not_logged_in
-
+  
   
 end
 
-post '/survey/create' do
-
-
-  redirect '/user'
-end

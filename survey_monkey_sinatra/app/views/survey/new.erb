@@ -2,17 +2,24 @@
 
 <h3 class="initial">Survey questions:</h3><br>
 
-<form id="create_survey" method="post" action="#">
-  <p id="error"></p>
-</form>
 
-<div id ="add_answer" class="form-group">
+<div id="error" class="alert alert-danger"><strong>Oops!</strong> Please, type your question/answer correctly to continue.</div>
+<div id="error_question" class="alert alert-danger"><strong>Oops!</strong> Question must have at least 1 answer to continue.</div>
+<div id="error_survey" class="alert alert-danger"><strong>Oops!</strong> You can't create a survey with no answers.</div>
+<div id="survey_form" method="post"> </div>
+
+<div id ="add_answer" >
 <input id="answer" type="text" name="first_name" placeholder="Type answer...">&nbsp;<input id="generate_answer" class="btn btn-primary" type="submit" name="submit" value="Generate Answer"><br>
 </div>
-
-<div id ="create_question" class="form-group">
+<div>
+<button id="finish_question" class="btn btn-primary" type="button" >Done With Question</button><br><br>
+</div>
+<div id ="create_question" >
 <input id="question" type="text" name="first_name" placeholder="Type your question...">&nbsp;<input id="generate_question" class="btn btn-primary" type="submit" name="submit" value="Generate Question"><br>
 </div>
 <br>
-<button id="finish_question" class="btn btn-primary" type="button" >Done With Question</button><br><br>
-<button class="btn btn-primary" type="button">Complete Survey</button>
+<form>
+<input  id="survey_id" type="hidden" name="survey_id" value="<%=@survey.id%>">
+</form>
+<button id="create_survey" class="btn btn-primary" type="button">Complete Survey</button>
+

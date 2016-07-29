@@ -12,7 +12,9 @@ $(document).ready(function() {
   $( '#add_answer').hide();
   $( '.initial' ).hide();
   $( '#finish_question' ).hide();
-  cont_survey = 0;
+  $( 'div #error' ).hide();
+  $( 'div #error_question' ).hide();  
+
 
   $( '#generate_question' ).on( 'click' , function(event) {
 
@@ -35,6 +37,17 @@ $(document).ready(function() {
 
   });
 
+
+  // JQuery for Survey post
+  $( '#create_survey' ).hide();
+  $( 'div #error_survey' ).hide();
+  $( '#create_survey' ).on( 'click' , function(event) {
+
+    event.preventDefault();
+    surveyGenerator();
+
+  });
+
 //-----------------------------------------------------------------//
 // Sign Up validation functions
 //-----------------------------------------------------------------//
@@ -49,6 +62,7 @@ function signupValidation() {
 
     if (x.length != 0 && validationMail(x) && y.length != 0 && numberPassword(y) && y.length > 7 && capitalPassword(y)) {
         formulario = $('#signup').serialize();
+        console.log(formulario)
         $.post('/signup',formulario, function(data) {
           if(data.indexOf('Oops! you enter an invalid email or password. Plase, try again.') !== -1) {
             $( location ).attr("href", '/signup?mess=0')
@@ -62,8 +76,8 @@ function signupValidation() {
         });
 
     } else {
-        $("#para").empty()
-        $("#mensaje_b").empty()
+        $("#para").empty();
+        $("#mensaje_b").empty();
         $("#mensaje_b").append('<li>' + "You must write a valid email adress (ex. hello@quora.com)" +'</li>');
         $("#mensaje_b").append('<li>' + "Password must have at least one digit (0-9)" +'</li>');
         $("#mensaje_b").append('<li>' + "Password must include at least one capital letter" +'</li>');
@@ -83,7 +97,7 @@ function capitalPassword(password){
 
 function validationMail(email) {
   var re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
-  var valid = re.test(email)
+  var valid = re.test(email);
   return valid
 }
 
@@ -95,36 +109,91 @@ function validationMail(email) {
 // Question generator
 function questionGenerator() {
 
-    $( 'form #error' ).empty();
     if (document.getElementById("question").value.length === 0 ){
-      $( 'form #error' ).append( 'Please, enter a valid question' )
+      $( 'div #error' ).show();
     } else {
+      $( '#create_survey' ).show();
+      $( 'div #error_survey' ).hide();
       $( '#create_question' ).hide();
       $( '.initial' ).show();
       var c = document.getElementById("question").value;
-      $( 'form' ).append('<div class="form-group"><h4>'  + cont_survey + '. ' + c + '</h4><ol></ol></div>')
+      $( '#survey_form' ).append('<div class="form-group"><h4 class="header_question">'  +  c + '</h4><div><ol></ol></div><br></div>')
       $( '#add_answer' ).show();
       $( '#finish_question' ).show();
       $( '#question').val('');
-      cont_survey++;
+      $( 'div #error' ).hide();
+      
     }    
 }
 
 // Answer generator
 function answerGenerator() {
-    var d = document.getElementById("answer").value;
-    $( 'form div:last ol' ).append('<li>' + d + '</li>');
-    $( '#answer').val('');  
+
+    if (document.getElementById("answer").value.length === 0 ){
+      $( 'div #error' ).show();
+      $( 'div #error_survey' ).hide();  
+    } else {
+      $( 'div #error_question' ).hide();
+      $( 'div #error_survey' ).hide();   
+      var d = document.getElementById("answer").value;
+      $( '#survey_form div:last ol' ).append('<li>' + d + '</li>');
+      $( '#answer').val('');  
+      $( 'div #error' ).hide();
+    }
 }
 
 // Question and Answers set to screen
-function setQuestion() {   
+function setQuestion() {
+
+  if ($( '#survey_form div:last ol' ).is(':empty')){
+    $( 'div #error' ).hide();
+    $( 'div #error_question' ).show();
+    $( 'div #error_survey' ).hide();  
+  } else {
+    $( '#finish_question' ).hide();
+    $( 'div #error_question' ).hide();
+    $( 'div #error_survey' ).hide();   
+    $( 'div #error' ).hide(); 
     $( '#add_answer').hide();
-    $( 'form div:last' ).css('background','#87CEFA')
-    $( 'form' ).append('<br>');
-    $( '#create_question' ).show();  
+    $( '#survey_form div:last' ).css('background','#87CEFA');
+    // $( '#survey_form' ).append('<br>');
+    $( '#create_question' ).show();    
+  } 
+}
+
+function surveyGenerator() {
+    
+  if ($( '#survey_form div ol' ).is(':empty')) {
+    $( 'div #error_survey' ).show();
+  } else {
+
+    $( '#survey_form div.form-group' ).each( function( index ) {
+
+        survey_id = 'survey_id=' + document.getElementById('survey_id').value;
+        pregunta = 'question=' + $( this ).html();
+        sint = survey_id+'&'+pregunta;
+
+      $.post('/question/create', sint, function(data){
+        console.log(data);
+          question_id = data;
+
+         // question_id = 'question_id=' + data
+         // $.post('/answers/create', question_id, function(data){
+         //   console.log(data);
+         // });
+         
+      });
+
+      $(this).
+    });
+
+
+    // console.log("chale")    
+    // seriealize entrega esto -> first_name=pepe&last_name=pecas&email=pepe%40pecas.com&password=Mario123
+  } 
 }
 
 
 //-----------------------------------------------------------------//
+
 });
