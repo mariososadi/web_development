@@ -1,11 +1,9 @@
-<h1>Quora 2.0</h1>
-  <h4>Recent Questions</h4><br>
-<p>Please, select a question if you know the answer.</p>
+<h1><i class="fa fa-rocket"></i>&nbsp;Rocket Survey</h1>
+  <h4>All Surveys</h4><br>
+
 <br><br>
 
-<% @question.each do|x| %>
-    <h3><a href="/questions/<%=x.id%>"><%=x.title%></a></h3><h5> Posted by: <%= @user.find(x.user_id).first_name %>&nbsp;<%= @user.find(x.user_id).last_name %></h5>
-    <%=x.quest_date%><br>
-    <h5>Answers: <%@cont=0%><% @answers.each do |y| %><% if y.question_id == x.id%>  <%@cont+=1 %> <% end %><% end %><%= @cont%></h5>
-    <br><br>
+<% @survey.each do|x| %>
+    <h3><a href="/survey/all/<%=x.id%>"><%=x.title%></a></h3><h5> Created by: <%= @user.find(@record.find_by(survey_id: x.id).user_id).first_name %>&nbsp;<%= @user.find(@record.find_by(survey_id: x.id).user_id).last_name %></h5>
+    <%=x.surv_date%><br>
 <% end %>

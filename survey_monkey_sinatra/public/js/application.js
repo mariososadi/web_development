@@ -48,6 +48,17 @@ $(document).ready(function() {
     surveyGenerator();
 
   });
+  
+  // JQuery for answer selection
+  answerActivator();
+
+  $( '#send_survey' ).on( 'click' , function(event) {
+    event.preventDefault();
+    surveySend();
+
+  });
+
+
 
 //-----------------------------------------------------------------//
 // Sign Up validation functions
@@ -104,7 +115,7 @@ function validationMail(email) {
 
 
 //-----------------------------------------------------------------//
-// Survey AJAX functions
+// Survey creation AJAX functions
 //-----------------------------------------------------------------//
 
 // Question generator
@@ -178,6 +189,45 @@ function surveyGenerator() {
   } 
 }
 
+//-----------------------------------------------------------------//
+// Survey Take AJAX functions
+//-----------------------------------------------------------------//
+
+// Question generator
+function answerActivator() {
+
+  $( 'li' ).on('click', function(e) {
+    if($(this).hasClass('inactive_answer')) {
+      $(this).removeClass('inactive_answer');
+      $(this).addClass('active_answer');
+      $(this).css( 'background','#87CEFA' );
+    } else {
+      $(this).removeClass('active_answer');
+      $(this).addClass('inactive_answer');
+      $(this).css( 'background', '' );
+    } 
+  });
+
+}
+
+
+function surveySend() {
+
+  $( 'li.active_answer input' ).each(function() {
+    var selection = $(this).serialize();
+    $.post('/answer/selection', selection, function(data) {
+      console.log(data)
+    });
+  });
+
+  var survey_id = $( '#survey_id' ).serialize();  
+  $.post('/survey/taken', survey_id, function(data) {
+      console.log(data)
+    });
+
+    $( location ).attr("href", '/user')
+
+}
 
 //-----------------------------------------------------------------//
 

@@ -1,0 +1,23 @@
+ <h1><%= @survey.title %></h1>
+
+<br>
+<br>
+<% @question.each do|x| %>
+    <% if x.survey_id == @survey.id %>
+     <h4><%=x.title%></h4>
+    
+    <ul>
+    <% @answer.each do |y| %>
+      <% if y.question_id == x.id %>
+       <li><%=y.title%>&nbsp;</li>
+       <p><%=y.count%>&nbsp;votes</p>
+      <% end %>
+    <% end %></ul><br>
+    <% end %>
+<% end %>
+
+<br>
+<a href="/user" > <i class="fa fa-chevron-left"> &nbsp;</i>Go Back to Profile</a><br>
+<br>
+<br>
+<br>

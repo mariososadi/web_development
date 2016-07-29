@@ -12,20 +12,23 @@
 </form>
 <br>
 <h3>Surveys Created</h3>
-<br>
+<br><ul>
 <% Record.all.each do|x| %>
   <% if x.user_id == @user.id && x.responder == 1%>
-    <h4><a href="/questions/<%= x.id%>"><%=Survey.find(x.survey_id).title%></a></h4>
+    <li><a href="/survey/stats/<%= x.survey_id %>"><%=Survey.find(x.survey_id).title%></a></li>
     <br>
   <% end %>
 <% end %>
+</ul>
 <br><br>
 
 <h3>Surveys Taken</h3>
 <br>
+<ul>
 <% Record.all.each do|x| %>
   <% if x.user_id == @user.id && x.responder == 0%>
-    <h4><%=Survey.find(x.survey_id).title%></h4>
+    <li><%=Survey.find(x.survey_id).title%></li>
     <br>
   <% end %>
 <% end %>
+</ul>

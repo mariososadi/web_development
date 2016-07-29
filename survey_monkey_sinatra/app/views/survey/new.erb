@@ -15,11 +15,9 @@
 <button id="finish_question" class="btn btn-primary" type="button" >Done With Question</button><br><br>
 </div>
 <form id ="create_question" method="post" action="#">
+  <input  id="survey_id" type="hidden" name="survey_id" value="<%=@survey.id%>">
 <input id="question" type="text" name="question" placeholder="Type your question...">&nbsp;<input id="generate_question" class="btn btn-primary" type="submit" name="submit" value="Generate Question"><br>
 </form>
 <br>
-<form>
-<input  id="survey_id" type="hidden" name="survey_id" value="<%=@survey.id%>">
-</form>
 <button id="create_survey" class="btn btn-primary" type="button">Complete Survey</button>
 

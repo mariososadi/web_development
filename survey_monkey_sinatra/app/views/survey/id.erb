@@ -1,18 +1,22 @@
- <h1><%= @question.title %></h1>
-  <p><%= @question.body %></p>
-  <a href="/questions/<%= @question.id %>/plus"><i class="fa fa-plus"></i></a> &nbsp;<%= @vote.counter%>&nbsp;<a href="/questions/<%= @question.id %>/minus"><i class="fa fa-minus"></i></a> 
+ <h1><%= @survey.title %></h1>
 
 <br>
-<br><br><br>
-<% Answer.all.each do|x| %>
-  <% if x.question_id == @question.id %>
-   <p><%=x.body%></p> <h5> Answered by: <%= @user.find(x.user_id).first_name %>&nbsp;<%= @user.find(x.user_id).last_name %></h5>&nbsp;
-    <%=x.quest_date%><br>
-    <a href="/answer/<%= x.id %>/plus"><i class="fa fa-plus"></i></a> &nbsp;<%= AnswerVote.find_by(answer_id: x.id).counter%>&nbsp;<a href="/answer/<%= x.id %>/minus"><i class="fa fa-minus"></i></a> <br><br><br>
-<% end %>
-<% end %>
 <br>
+<% Question.all.each do|x| %>
+    <% if x.survey_id == @survey.id %>
+     <h4><%=x.title%></h4>
+    
+    <ol>
+    <% @answer.each do |y| %>
+      <% if y.question_id == x.id %>
+       <li class="inactive_answer"><input name="answer_id" type="hidden" value="<%=y.id%>"><%=y.title%></li>
+      <% end %>
+      <% end %>
+    <% end %></ol><br>
+<% end %>
 
-<p>
-<a href="/questions/<%= @question.id %>/answer/new"><i class="fa fa-pencil"></i> &nbsp;Answer</a><br>
-</p>
+<br>
+<form>
+<input  id="survey_id" type="hidden" name="survey_id" value="<%=@survey.id%>">
+</form>
+<button id="send_survey" class="btn btn-primary" type="button">Send Survey</button>

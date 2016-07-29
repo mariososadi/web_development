@@ -27,7 +27,7 @@
 <% if logged_in? %>
 
   <li><a href="/user">Create New Survey</a></li>
-  <li><a href="/questions/all_users">Answer Survey</a></li>
+  <li><a href="/survey/all">Answer Survey</a></li>
   <li><a href="/user"><%= current_user.first_name%>&nbsp;<%= current_user.last_name%></a></li>
   <li><a href="/logout">Log Out</a></li>
 <% else %>
